@@ -1,7 +1,7 @@
 /*Background/Back-End Stuff goes here*/
 body {
   background-attachment: fixed;
-  background-image: url("assets/sprites/tile_s.png");
+  background-image: url("assets/sprites/tiles_s.png");
   background-repeat: repeat;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(255, 255, 255);
@@ -18,7 +18,7 @@ body {
 /* Navigation Bar*/
 .navbar {
   color: #111111;
-  background-color: #7f7f7f;
+  background-color: #627568;
   border-radius: 4px;
   max-width: 960px;
 }
