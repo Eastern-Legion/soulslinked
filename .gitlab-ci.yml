@@ -10,4 +10,4 @@ pages:
   only:
   - master
 
-  baseurl: "/blog"
+  baseurl: "/public"
