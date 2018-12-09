@@ -14,8 +14,7 @@ body#2 {
   background-attachment: fixed;
   background-image: url("assets/bg_2.webp");
   background-repeat: repeat;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
-  margin: auto;
+  font-family: 'Trebuchet MS', 'Trebuchet MS', 'Trebuchet MS', 'Trebuchet MS';
   max-width: 1280px;
 }
 
@@ -25,23 +24,27 @@ body#2 {
   background-color: #627568;
   border-radius: 4px;
   max-width: 960px;
+  overflow: auto;
 }
 
 /* Navigation Bar's Text*/
 .navbar a {
   display: inline-block;
-  color: #303030;
+  color: #3b2d19;
   font-size: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 12px;
   text-decoration: none;
 }
 
 /* Navigation Bar's Text When Hovered*/
 .navbar a:hover {
   color: #dbdbdb;
+}
+
+/* Current/active navbar link */
+.active {
+  background-color: rgb(245, 175, 45);
+  color: black;
 }
 
 /* Scrolling Notification Because Why Not (tm)*/
