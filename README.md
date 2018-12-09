@@ -4,4 +4,4 @@
 
 Zelda-ish realistic Game Project `made by unity ?`
 
-## Website [here](https://easternlegion.gitlab.io/soulslinked/main)
+## Website [here](https://eastern-legion.gitlab.io/soulslinked/main)
