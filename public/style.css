@@ -50,7 +50,7 @@ body#2 {
 /* Scrolling Notification Because Why Not (tm)*/
 .scroll-left {
   background-color: rgba(0, 0, 0, 0.125);
-  width: 60%;
+  width: 600%;
   height: 50px;	
   overflow: hidden;
   position: relative;
@@ -59,7 +59,7 @@ body#2 {
 
 .scroll-left p {
  position: absolute;
- width: 100%;
+ width: 100;
  height: 100%;
  margin: 0;
  line-height: 40px;
@@ -70,9 +70,9 @@ body#2 {
  -webkit-transform:translateX(100%);	
  transform:translateX(100%);
  /* Apply animation to this element */	
- -moz-animation: scroll-left 10s linear infinite;
- -webkit-animation: scroll-left 10s linear infinite;
- animation: scroll-left 10s linear infinite;
+ -moz-animation: scroll-left 25s linear infinite;
+ -webkit-animation: scroll-left 25s linear infinite;
+ animation: scroll-left 25s linear infinite;
 }
 
 /* Move it (define the animation) */
