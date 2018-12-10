@@ -51,8 +51,9 @@ body#2 {
 .scroll-left {
   background-color: rgba(0, 0, 0, 0.125);
   width: 600%;
-  height: 50px;	
-  overflow: hidden;
+  height: 50px;
+  margin: 0px;
+  overflow: visible;
   position: relative;
   border-radius: 2px;
 }
