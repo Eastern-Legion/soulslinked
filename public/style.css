@@ -50,10 +50,10 @@ body#2 {
 /* Scrolling Notification Because Why Not (tm)*/
 .scroll-left {
   background-color: rgba(0, 0, 0, 0.125);
-  width: 600%;
+  width: 200%;
   height: 50px;
   margin: 0px;
-  overflow: visible;
+  overflow: fixed;
   position: relative;
   border-radius: 2px;
 }
@@ -65,7 +65,7 @@ body#2 {
  margin: 0;
  line-height: 40px;
  text-align: center;
- overflow: visible;
+ overflow: hidden;
  /* Starting position */
  -moz-transform:translateX(100%);
  -webkit-transform:translateX(100%);	
