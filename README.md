@@ -1,6 +1,6 @@
 # Souls Linked  
 
-## Title Game PEnding : Radiant Enigma
+## Title Game Pending : Radiant Enigma
 
 [![pipeline status](https://gitlab.com/eastern-legion/soulslinked/badges/master/pipeline.svg)](https://gitlab.com/eastern-legion/soulslinked/commits/master)
 
