@@ -1,6 +1,5 @@
-# Souls Linked  
-
-## Title Game Pending : Radiant Enigma
+# Radiant Enigma  (Working title)
+Update (24/1/20) : The scope of the game revamped.
 
 [![pipeline status](https://gitlab.com/eastern-legion/soulslinked/badges/master/pipeline.svg)](https://gitlab.com/eastern-legion/soulslinked/commits/master)
 
