@@ -8,5 +8,4 @@ Zelda-ish realistic Game Project `made by unity ?`
 
 ## Website [here](https://eastern-legion.gitlab.io/soulslinked/)
 
-
 Apparently, one of the founders can't clone this repo, hmmmmmmm
