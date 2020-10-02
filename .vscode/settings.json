@@ -16,5 +16,6 @@
         "panel.border": "#1a1a1a",
         "sideBar.border": "#1a1a1a",
         "editorGroup.border": "#1a1a1a"
-    }
+    },
+    "git.ignoreLimitWarning": true
 }
