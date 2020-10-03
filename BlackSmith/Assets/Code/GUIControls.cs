@@ -279,7 +279,7 @@ public class GUIControls : MonoBehaviour{
 						
 					}
 				}
-				if(PlayerController.canJump || PlayerController.canDoubleJump){
+				if(PlayerController.canJump){
 					if(PlayerController.isGrounded){
 						if(GUI.Button(new Rect(25, 165, 100, 30), "Jump")){
 							if(PlayerController.canJump){
@@ -287,13 +287,6 @@ public class GUIControls : MonoBehaviour{
 							}
 							if(GUI.Button(new Rect(175, 165, 100, 30), "PickupTrigger")){
 								PlayerController.Pickup();
-							}
-						}
-					}
-					else if(PlayerController.CharacterState != CharacterState.CLIMBING){
-						if(GUI.Button(new Rect(25, 165, 100, 30), "Double Jump")){
-							if(PlayerController.canDoubleJump && !PlayerController.isDoubleJumping){
-								StartCoroutine(PlayerController._Jump());
 							}
 						}
 					}

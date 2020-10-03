@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : CharacterController
 {
-	public  float Camerazoom;
+	public  float InputScroll;
     public override void Inputs()
     {
         //Input abstraction for easier asset updates using outside control schemes
@@ -19,14 +19,14 @@ public class PlayerController : CharacterController
         inputCastR = Input.GetButtonDown("CastR");
         inputSwitchUpDown = Input.GetAxisRaw("SwitchUpDown");
         inputSwitchLeftRight = Input.GetAxisRaw("SwitchLeftRight");
-        inputStrafe = Input.GetKey(KeyCode.LeftShift);
+        inputLshift = Input.GetKey(KeyCode.LeftShift);
         inputTargetBlock = Input.GetAxisRaw("TargetBlock");
         inputDashVertical = Input.GetAxisRaw("DashVertical");
         inputDashHorizontal = Input.GetAxisRaw("DashHorizontal");
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
         inputAiming = Input.GetButtonDown("Aiming");
-		Camerazoom = Input.GetAxisRaw("Mouse Scroll");
+		InputScroll = Input.GetAxisRaw("Mouse Scroll");
 		/*
 		inputDiUp = Input.GetButtonDown("DirectUp");
 		inputDiDown = Input.GetButtonDown("DirectDown");
@@ -49,6 +49,25 @@ public class PlayerController : CharacterController
 		}
 	}
 
+	public override void  CameraRelativeInput(){
+		//Camera relative movement
+		Transform cameraTransform = sceneCamera.transform;
+		//Forward vector relative to the camera along the x-z plane   
+		Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
+		forward.y = 0;
+		forward = forward.normalized;
+		//Right vector relative to the camera always orthogonal to the forward vector
+		Vector3 right = new Vector3(forward.z, 0, -forward.x);
+		//directional inputs
+		dv = inputDashVertical;
+		dh = inputDashHorizontal;
+		if(!isRolling && !isAiming){
+			targetDashDirection = dh * right + dv * -forward;
+		}
+		x = inputHorizontal;
+		z = inputVertical;
+		inputVec = x * right + z * forward;
+	}
 	public override void Aiming()
 	{
 		for (int i = 0; i < Input.GetJoystickNames().Length; i++)

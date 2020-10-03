@@ -58,20 +58,18 @@ public class CameraController : MonoBehaviour
 			CamAxis = new Vector3(0,1,0);
 		}
 
-		if(PlayerController.Camerazoom != 0 && PlayerController.Camerazoom == -1 )
+		if(PlayerController.inputLshift)
 		{
+			if (PlayerController.InputScroll == -1)
+			{
 			offsetHeight = offsetHeight-1;
-		} 
-		else if(PlayerController.Camerazoom != 0&& PlayerController.Camerazoom == 1)
-		{
+			} 
+			else if(PlayerController.InputScroll == 1)
+			{
 			offsetHeight = offsetHeight+1;
+			}
 		}
-		else
-		{
-			offsetHeight = offsetHeight;
-		}
-
-
+		
 		if(following)
 		{
 			offset = Quaternion.AngleAxis(rotate * rotateSpeed, CamAxis) * offset;
@@ -111,24 +109,24 @@ public class CameraController : MonoBehaviour
 	{
 		if (Input.mousePosition.x > width - boundary)
 		{
-		transform.position -= new Vector3 (Input.GetAxisRaw ("Mouse X") * Time.deltaTime * speed, 0.0f, 0.0f);
-	}
+			transform.position -= new Vector3 (Input.GetAxisRaw ("Mouse X") * Time.deltaTime * speed, 0.0f, 0.0f);
+		}
 		
-	if (Input.mousePosition.x < 0 + boundary)
-	{
-		transform.position -= new Vector3 (Input.GetAxisRaw ("Mouse X") * Time.deltaTime * speed, 0.0f, 0.0f);
-	}
+		if (Input.mousePosition.x < 0 + boundary)
+		{
+			transform.position -= new Vector3 (Input.GetAxisRaw ("Mouse X") * Time.deltaTime * speed, 0.0f, 0.0f);
+		}
 		
-	if (Input.mousePosition.y > height - boundary)
-	{
-		transform.position -= new Vector3 (0.0f, 0.0f, Input.GetAxisRaw ("Mouse Y") * Time.deltaTime * speed);		
-	}
+		if (Input.mousePosition.y > height - boundary)
+		{
+			transform.position -= new Vector3 (0.0f, 0.0f, Input.GetAxisRaw ("Mouse Y") * Time.deltaTime * speed);		
+		}
  
-	if (Input.mousePosition.y < 0 + boundary)
-	{
-		transform.position -= new Vector3 (0.0f, 0.0f, Input.GetAxisRaw ("Mouse Y") * Time.deltaTime * speed);		
-	}
+		if (Input.mousePosition.y < 0 + boundary)
+		{
+			transform.position -= new Vector3 (0.0f, 0.0f, Input.GetAxisRaw ("Mouse Y") * Time.deltaTime * speed);		
+		}
  
-}
+	}
 	*/
 }

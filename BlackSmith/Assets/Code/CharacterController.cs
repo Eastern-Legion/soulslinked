@@ -27,10 +27,11 @@ public enum CharacterState{
 }
 
 public class CharacterController : MonoBehaviour{
-	#region Variables
+    private const bool V = true;
+    #region Variables
 
-	//Components
-	[HideInInspector]
+    //Components
+    [HideInInspector]
 	public UnityEngine.AI.NavMeshAgent navMeshAgent;
 	[HideInInspector]
 	public Rigidbody rb;
@@ -54,14 +55,9 @@ public class CharacterController : MonoBehaviour{
 	[HideInInspector]
 	public bool isGrounded;
 	public float jumpSpeed = 12;
-	public float doublejumpSpeed = 12;
 	bool doJump = false;
-	bool doublejumping = true;
-	[HideInInspector]
-	public bool canDoubleJump = false;
-	[HideInInspector]
-	public bool isDoubleJumping = false;
-	bool doublejumped = false;
+	int JumpCount;
+	public int JumpLimit;
 	bool isFalling;
 	bool startFall;
 	float fallingVelocity = -1f;
@@ -75,7 +71,7 @@ public class CharacterController : MonoBehaviour{
 
 	//rolling variables
 	public float rollSpeed = 8;
-	bool isRolling = false;
+	public bool isRolling = false;
 	public float rollduration;
 
 	//movement variables
@@ -93,9 +89,10 @@ public class CharacterController : MonoBehaviour{
 	public float x;
 	[HideInInspector]
 	public float z;
-	float dv;
-	float dh;
-	Vector3 inputVec;
+	public float dv;
+	public float dh;
+	[HideInInspector]
+	public Vector3 inputVec;
 	Vector3 newVelocity;
 
 	//Weapon and Shield
@@ -121,13 +118,11 @@ public class CharacterController : MonoBehaviour{
 	bool isKnockback;
 	[HideInInspector]
 	public bool isSitting = false;
-	bool isAiming = false;
+	public bool isAiming = false;
 	[HideInInspector]
-	public bool
-	isClimbing = false;
+	public bool isClimbing = false;
 	[HideInInspector]
-	public bool
-	isNearLadder = false;
+	public bool isNearLadder = false;
 	[HideInInspector]
 	public bool isNearCliff = false;
 	[HideInInspector]
@@ -192,7 +187,7 @@ public class CharacterController : MonoBehaviour{
 	[HideInInspector]
 	public float inputSwitchLeftRight;
 	[HideInInspector]
-	public bool inputStrafe;
+	public bool inputLshift;
 	[HideInInspector]
 	public float inputTargetBlock = 0;
 	[HideInInspector]
@@ -321,7 +316,7 @@ public class CharacterController : MonoBehaviour{
 				isSwitchingFinished = true;
 			}
 			//if strafing 
-			if(inputStrafe || inputTargetBlock > 0.1f && canAction && weapon != Weapon.RIFLE){  
+			if(inputLshift || inputTargetBlock > 0.1f && canAction && weapon != Weapon.RIFLE){  
 				if(!isRelax){
 					isStrafing = true;
 					animator.SetBool("Strafing", true);
@@ -539,24 +534,8 @@ public class CharacterController : MonoBehaviour{
 	}
 
 	//All movement is based off camera facing
-	void CameraRelativeInput(){
-		//Camera relative movement
-		Transform cameraTransform = sceneCamera.transform;
-		//Forward vector relative to the camera along the x-z plane   
-		Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
-		forward.y = 0;
-		forward = forward.normalized;
-		//Right vector relative to the camera always orthogonal to the forward vector
-		Vector3 right = new Vector3(forward.z, 0, -forward.x);
-		//directional inputs
-		dv = inputDashVertical;
-		dh = inputDashHorizontal;
-		if(!isRolling && !isAiming){
-			targetDashDirection = dh * right + dv * -forward;
-		}
-		x = inputHorizontal;
-		z = inputVertical;
-		inputVec = x * right + z * forward;
+	public virtual void CameraRelativeInput()
+	{
 	}
 
 	#endregion
@@ -774,14 +753,14 @@ public class CharacterController : MonoBehaviour{
 		Vector3 offset = new Vector3(0, 0.4f, 0);
 		if(Physics.Raycast((transform.position + offset), -Vector3.up, out hit, 100f)){
 			distanceToGround = hit.distance;
-			if(distanceToGround < threshold){
+			if(distanceToGround < threshold)
+			{
 				isGrounded = true;
 				canJump = true;
 				startFall = false;
-				doublejumped = false;
-				canDoubleJump = false;
 				isFalling = false;
 				fallTimer = 0;
+				JumpCount = 0;
 				if(!isJumping){
 					animator.SetInteger("Jumping", 0);
 				}
@@ -802,44 +781,74 @@ public class CharacterController : MonoBehaviour{
 		}
 	}
 
-	void Jumping(){
-		if(isGrounded){
-			if(canJump && doJump){
+	void Jumping()
+	{
+		if(isGrounded)
+		{
+			if(canJump && doJump && !isJumping && _JumpCount())
+			{
 				StartCoroutine(_Jump());
+				JumpCount += 1;
+				Debug.Log("Jump regular");
 			}
 		}
-		else{    
-			canDoubleJump = true;
-			canJump = false;
-			if(isFalling){
-				//set the animation back to falling
+		else
+		{    
+			if(!_JumpCount())
+			{
+				canJump = false;
+				Debug.Log("Jump limit reached");
+			}
+			if(canJump && doJump && !isJumping && _JumpCount())
+			{
+				StartCoroutine(_Jump());
+				JumpCount += 1;
+				Debug.Log("Jump double triggered");
+			}
+
+			if(isFalling)
+			{
+				Debug.Log("falling");
 				animator.SetInteger("Jumping", 2);
+				canJump = false;
 				//prevent from going into land animation while in air
-				if(!startFall){
+				if(!startFall)
+				{
 					animator.SetTrigger("JumpTrigger");
 					startFall = true;
 				}
 			}
-			if(canDoubleJump && doublejumping && Input.GetButtonDown("Jump") && !doublejumped && isFalling){
-				// Apply the current movement to launch velocity
-				rb.velocity += doublejumpSpeed * Vector3.up;
-				animator.SetInteger("Jumping", 3);
-				doublejumped = true;
-			}
 		}
 	}
+	
 
-	public IEnumerator _Jump(){
+	public IEnumerator _Jump()
+	{
 		isJumping = true;
-		animator.SetInteger("Jumping", 1);
+		if (JumpCount >= 1)	{animator.SetInteger("Jumping", 3);}
+		else{animator.SetInteger("Jumping", 1);}
 		animator.SetTrigger("JumpTrigger");
 		// Apply the current movement to launch velocity
-		rb.velocity += jumpSpeed * Vector3.up;
+		float jjumpSpeed = jumpSpeed - (JumpCount + 1);
+		rb.velocity += jjumpSpeed * Vector3.up;
 		canJump = false;
 		yield return new WaitForSeconds(0.5f);
 		isJumping = false;
 	}
 
+	bool _JumpCount()
+	{
+		 Debug.Log("Jump count is : " + JumpCount);
+
+		if (JumpCount >= JumpLimit)
+		{
+			return false;
+		} 
+		else
+		{
+			return true;
+		}
+	}
 	void AirControl(){
 		if(!isGrounded){
 			Vector3 motion = inputVec;
