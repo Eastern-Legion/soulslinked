@@ -29,7 +29,6 @@ public enum CharacterState
 }
 
 public class CharacterController : MonoBehaviour{
-    private const bool V = true;
     #region Variables
 
     [Header("Components")]
@@ -46,6 +45,8 @@ public class CharacterController : MonoBehaviour{
 	public Camera sceneCamera;
 	public Vector3 waistRotationOffset;
 	public CharacterState CharacterState = CharacterState.DEFAULT;
+
+	public BasicNeeds BasicNeeds;
 
 	[Header("Jump")]
 	public float gravity = -9.8f;
@@ -102,12 +103,10 @@ public class CharacterController : MonoBehaviour{
 	//Weapon and Shield
 	[Header("Weapon variable")]
 	public Weapon weapon;
-	[HideInInspector]
 	public int rightWeapon = 0;
-	[HideInInspector]
 	public int leftWeapon = 0;
 	[HideInInspector]
-	public bool isRelax = false;
+	public bool isRelax = true;
 	bool isSwitchingFinished = true;
 
 	//isStrafing/action variables
@@ -210,7 +209,18 @@ public class CharacterController : MonoBehaviour{
 		rb = GetComponent<Rigidbody>();
 		capCollider = GetComponent<CapsuleCollider>();
 		FXSplash = transform.GetChild(2).GetComponent<ParticleSystem>();
+		BasicNeeds = GetComponent<BasicNeeds>();
 	}
+
+    void Start()
+    {
+        animator.SetBool("Relax", true);
+		isRelax = true;
+		weapon = Weapon.RELAX;
+		canAction = false;
+		animator.SetTrigger("RelaxTrigger");
+    }
+
 
 	#endregion
 
@@ -781,7 +791,7 @@ public class CharacterController : MonoBehaviour{
 			{
 				canJump = false;
 			}
-			if(canJump && doJump && !isJumping && _JumpCount())
+			if(canJump && doJump  && !isJumping && _JumpCount())
 			{
 				StartCoroutine(_Jump());
 				JumpCount += 1;
@@ -870,7 +880,8 @@ public class CharacterController : MonoBehaviour{
 
 	#region MiscMethods
 
-	public void Climbing(){
+	public void Climbing()
+	{
 		CharacterState = CharacterState.CLIMBING;
 	}
 
@@ -1171,6 +1182,14 @@ public class CharacterController : MonoBehaviour{
 		}
 	}
 
+	IEnumerator _Staggered(float staggertime)
+	{
+		animator.SetTrigger("Stunned");
+		StartCoroutine(_Lock(true, true, true, 0,staggertime));
+		animator.SetTrigger("Stunned");
+		yield return null;
+	}
+
 	IEnumerator _Knockback(Vector3 knockDirection, int knockBackAmount, int variableAmount){
 		isKnockback = true;
 		StartCoroutine(_KnockbackForce(knockDirection, knockBackAmount, variableAmount));
@@ -1187,7 +1206,7 @@ public class CharacterController : MonoBehaviour{
 
 	public IEnumerator _Death(){
 		animator.SetTrigger("Death1Trigger");
-		StartCoroutine(_Lock(true, true, true, 0.1f, 1.5f));
+		StartCoroutine(_Lock(true, true, true, 0, 1.5f));
 		isDead = true;
 		animator.SetBool("Moving", false);
 		inputVec = new Vector3(0, 0, 0);
@@ -1205,9 +1224,10 @@ public class CharacterController : MonoBehaviour{
 
 	#region Rolling
 
-	void Rolling(){
+	public virtual void Rolling()
+	{
 		if(!isRolling && isGrounded && !isAiming){
-			if(Input.GetAxis("DashVertical") > 0.5f || Input.GetAxis("DashVertical") < -0.5f || Input.GetAxis("DashHorizontal") > 0.5f || Input.GetAxis("DashHorizontal") < -0.5f){
+			if(inputDashVertical > 0.5f || inputDashVertical < -0.5f || inputDashHorizontal > 0.5f || inputDashHorizontal < -0.5f){
 				StartCoroutine(_DirectionalRoll());
 			}
 		}
@@ -1256,7 +1276,35 @@ public class CharacterController : MonoBehaviour{
 	}
 
 	//Placeholder functions for Animation events
-	public void Hit(){
+	public void Hit()
+	{
+		 /*        
+        if damage collider contact ,get damage from collider
+        {
+            if blocking
+            {
+                if block < than chance
+                {
+                     StartCoroutine(CharacterController._BlockHitReact());
+                Health = Health - damage from collider
+                }
+               
+                else
+		        {
+                    StartCoroutine(CharacterController._BlockBreak());
+                    StartCoroutine(_Staggered(4));
+                }
+            }
+            else
+            {
+                
+                CharacterController.GetHit();
+                Health = Health - damage from collider
+				StartCoroutine(_Staggered(1));
+            }
+            
+		}
+        */
 	}
 
 	public void Shoot(){

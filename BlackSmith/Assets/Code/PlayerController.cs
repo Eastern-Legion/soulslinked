@@ -5,6 +5,41 @@ using UnityEngine;
 public class PlayerController : CharacterController
 {
 	public  float InputScroll;
+    public float startTime = 0f;
+    public float holdTime = 2.0f; //2 seconds
+     
+    
+	void _Modechange()
+	{
+		/* if (Input.GetKey(KeyCode.E))
+		{
+			for (startTime = 0; holdTime < 20; startTime +=0.1f)
+			{
+				if (!isRelax)
+				{
+					animator.SetBool("Relax", true);
+					isRelax = true;
+					weapon = Weapon.RELAX;
+					canAction = false;
+					animator.SetTrigger("RelaxTrigger");
+				}
+				else
+				{
+					animator.SetBool("Relax", false);
+					isRelax = false;
+					StartCoroutine(_SwitchWeapon(0));
+					weapon = Weapon.UNARMED;
+					canAction = true;
+					animator.SetTrigger("RelaxTrigger");
+				}
+				startTime = 0f;	
+			}
+		}
+		else
+		{
+			startTime = 0f;	
+		} */
+	}
     public override void Inputs()
     {
         //Input abstraction for easier asset updates using outside control schemes
@@ -35,6 +70,15 @@ public class PlayerController : CharacterController
 		inputFire = Input.GetButtonDown("Fire");
 		*/
 		TarPos = Input.mousePosition;
+		_Modechange();
+	}
+	public override void Rolling()
+	{
+		if(!isRolling && isGrounded && !isAiming && Input.GetKey(KeyCode.LeftControl)){
+			if(inputDashVertical > 0.5f || inputDashVertical < -0.5f || inputDashHorizontal > 0.5f || inputDashHorizontal < -0.5f){
+				StartCoroutine(_DirectionalRoll());
+			}
+		}
 	}
 
 	void ChangeTargetPos()

@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
 		{
 			rotate = -1;
 		} 
-		else if(Input.GetKey(KeyCode.E))
+		else if(Input.GetKey(KeyCode.V))
 		{
 			rotate = 1;
 		}
