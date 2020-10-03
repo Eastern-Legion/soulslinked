@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Runtime.InteropServices;
 
-public enum Weapon{
+public enum Weapon
+{
 	UNARMED = 0,
 	TWOHANDSWORD = 1,
 	TWOHANDSPEAR = 2,
@@ -18,7 +19,8 @@ public enum Weapon{
 	ARMEDSHIELD = 12
 }
 
-public enum CharacterState{
+public enum CharacterState
+{
 	DEFAULT,
 	BLOCKING,
 	STRAFING,
@@ -30,7 +32,7 @@ public class CharacterController : MonoBehaviour{
     private const bool V = true;
     #region Variables
 
-    //Components
+    [Header("Components")]
     [HideInInspector]
 	public UnityEngine.AI.NavMeshAgent navMeshAgent;
 	[HideInInspector]
@@ -45,7 +47,7 @@ public class CharacterController : MonoBehaviour{
 	public Vector3 waistRotationOffset;
 	public CharacterState CharacterState = CharacterState.DEFAULT;
 
-	//jumping variables
+	[Header("Jump")]
 	public float gravity = -9.8f;
 	[HideInInspector]
 	public float gravityTemp = 0f;
@@ -65,17 +67,19 @@ public class CharacterController : MonoBehaviour{
 	public float fallDelay = 0.2f;
 
 	// Used for continuing momentum while in air
+	[Header("Mid AIr Movement")]
 	public float inAirSpeed = 8f;
 	float maxVelocity = 2f;
 	float minVelocity = -2f;
 
 	//rolling variables
+	[Header("Roll variable")]
 	public float rollSpeed = 8;
 	public bool isRolling = false;
 	public float rollduration;
 
 	//movement variables
-	[HideInInspector]
+	[Header("movement")]
 	public bool useMeshNav;
 	[HideInInspector]
 	public bool isMoving = false;
@@ -96,6 +100,7 @@ public class CharacterController : MonoBehaviour{
 	Vector3 newVelocity;
 
 	//Weapon and Shield
+	[Header("Weapon variable")]
 	public Weapon weapon;
 	[HideInInspector]
 	public int rightWeapon = 0;
@@ -106,6 +111,7 @@ public class CharacterController : MonoBehaviour{
 	bool isSwitchingFinished = true;
 
 	//isStrafing/action variables
+	[Header("Actionvariable")]
 	public bool hipShooting = false;
 	[HideInInspector]
 	public bool canAction = true;
@@ -138,28 +144,6 @@ public class CharacterController : MonoBehaviour{
 
 	//Swimming variables
 	public float inWaterSpeed = 8f;
-
-	//Weapon Models
-	public GameObject twoHandAxe;
-	public GameObject twoHandSword;
-	public GameObject twoHandSpear;
-	public GameObject twoHandBow;
-	public GameObject twoHandCrossbow;
-	public GameObject twoHandClub;
-	public GameObject staff;
-	public GameObject swordL;
-	public GameObject swordR;
-	public GameObject maceL;
-	public GameObject maceR;
-	public GameObject daggerL;
-	public GameObject daggerR;
-	public GameObject itemL;
-	public GameObject itemR;
-	public GameObject shield;
-	public GameObject pistolL;
-	public GameObject pistolR;
-	public GameObject rifle;
-	public GameObject spear;
 	public bool instantWeaponSwitch;
 
 	//Inputs
@@ -226,7 +210,6 @@ public class CharacterController : MonoBehaviour{
 		rb = GetComponent<Rigidbody>();
 		capCollider = GetComponent<CapsuleCollider>();
 		FXSplash = transform.GetChild(2).GetComponent<ParticleSystem>();
-		HideAllWeapons();
 	}
 
 	#endregion
@@ -797,18 +780,15 @@ public class CharacterController : MonoBehaviour{
 			if(!_JumpCount())
 			{
 				canJump = false;
-				Debug.Log("Jump limit reached");
 			}
 			if(canJump && doJump && !isJumping && _JumpCount())
 			{
 				StartCoroutine(_Jump());
 				JumpCount += 1;
-				Debug.Log("Jump double triggered");
 			}
 
 			if(isFalling)
 			{
-				Debug.Log("falling");
 				animator.SetInteger("Jumping", 2);
 				canJump = false;
 				//prevent from going into land animation while in air
@@ -829,7 +809,7 @@ public class CharacterController : MonoBehaviour{
 		else{animator.SetInteger("Jumping", 1);}
 		animator.SetTrigger("JumpTrigger");
 		// Apply the current movement to launch velocity
-		float jjumpSpeed = jumpSpeed - (JumpCount + 1);
+		float jjumpSpeed = jumpSpeed - JumpCount;
 		rb.velocity += jjumpSpeed * Vector3.up;
 		canJump = false;
 		yield return new WaitForSeconds(0.5f);
@@ -838,8 +818,6 @@ public class CharacterController : MonoBehaviour{
 
 	bool _JumpCount()
 	{
-		 Debug.Log("Jump count is : " + JumpCount);
-
 		if (JumpCount >= JumpLimit)
 		{
 			return false;
@@ -1344,9 +1322,6 @@ public class CharacterController : MonoBehaviour{
 
 	//for controller weapon switching
 	void SwitchWeaponTwoHand(int upDown){
-		if(instantWeaponSwitch){
-			HideAllWeapons();
-		}
 		isSwitchingFinished = false;
 		int weaponSwitch = (int)weapon;
 		if(upDown == 0){
@@ -1371,9 +1346,6 @@ public class CharacterController : MonoBehaviour{
 
 	//for controller weapon switching
 	void SwitchWeaponLeftRight(int leftRight){
-		if(instantWeaponSwitch){
-			HideAllWeapons();
-		}
 		int weaponSwitch = 0;
 		isSwitchingFinished = false;
 		isSwitchingFinished = false;
@@ -1753,134 +1725,11 @@ public class CharacterController : MonoBehaviour{
 		yield return null;
 	}
 
-	public IEnumerator _WeaponVisibility(int weaponNumber, float delayTime, bool visible){
+	public IEnumerator _WeaponVisibility(int weaponNumber, float delayTime, bool visibility){
 		yield return new WaitForSeconds(delayTime);
-		if(weaponNumber == 1){
-			twoHandSword.SetActive(visible);
-		}
-		if(weaponNumber == 2){
-			twoHandSpear.SetActive(visible);
-		}
-		if(weaponNumber == 3){
-			twoHandAxe.SetActive(visible);
-		}
-		if(weaponNumber == 4){
-			twoHandBow.SetActive(visible);
-		}
-		if(weaponNumber == 5){
-			twoHandCrossbow.SetActive(visible);
-		}
-		if(weaponNumber == 6){
-			staff.SetActive(visible);
-		}
-		if(weaponNumber == 7){
-			shield.SetActive(visible);
-		}
-		if(weaponNumber == 8){
-			swordL.SetActive(visible);
-		}
-		if(weaponNumber == 9){
-			swordR.SetActive(visible);
-		}
-		if(weaponNumber == 10){
-			maceL.SetActive(visible);
-		}
-		if(weaponNumber == 11){
-			maceR.SetActive(visible);
-		}
-		if(weaponNumber == 12){
-			daggerL.SetActive(visible);
-		}
-		if(weaponNumber == 13){
-			daggerR.SetActive(visible);
-		}
-		if(weaponNumber == 14){
-			itemL.SetActive(visible);
-		}
-		if(weaponNumber == 15){
-			itemR.SetActive(visible);
-		}
-		if(weaponNumber == 16){
-			pistolL.SetActive(visible);
-		}
-		if(weaponNumber == 17){
-			pistolR.SetActive(visible);
-		}
-		if(weaponNumber == 18){
-			rifle.SetActive(visible);
-		}
-		if(weaponNumber == 19){
-			spear.SetActive(visible);
-		}
-		if(weaponNumber == 20){
-			twoHandClub.SetActive(visible);
-		}
+		// weapon equiped game object (hide/reveal); 
 		yield return null;
 	}
-
-	void HideAllWeapons(){
-		if(twoHandAxe != null){
-			twoHandAxe.SetActive(false);
-		}
-		if(twoHandBow != null){
-			twoHandBow.SetActive(false);
-		}
-		if(twoHandCrossbow != null){
-			twoHandCrossbow.SetActive(false);
-		}
-		if(twoHandSpear != null){
-			twoHandSpear.SetActive(false);
-		}
-		if(twoHandSword != null){
-			twoHandSword.SetActive(false);
-		}
-		if(twoHandClub != null){
-			twoHandClub.SetActive(false);
-		}
-		if(staff != null){
-			staff.SetActive(false);
-		}
-		if(swordL != null){
-			swordL.SetActive(false);
-		}
-		if(swordR != null){
-			swordR.SetActive(false);
-		}
-		if(maceL != null){
-			maceL.SetActive(false);
-		}
-		if(maceR != null){
-			maceR.SetActive(false);
-		}
-		if(daggerL != null){
-			daggerL.SetActive(false);
-		}
-		if(daggerR != null){
-			daggerR.SetActive(false);
-		}
-		if(itemL != null){
-			itemL.SetActive(false);
-		}
-		if(itemR != null){
-			itemR.SetActive(false);
-		}
-		if(shield != null){
-			shield.SetActive(false);
-		}
-		if(pistolL != null){
-			pistolL.SetActive(false);
-		}
-		if(pistolR != null){
-			pistolR.SetActive(false);
-		}
-		if(rifle != null){
-			rifle.SetActive(false);
-		}
-		if(spear != null){
-			spear.SetActive(false);
-		}
-	}
-
 	public IEnumerator _BlockHitReact(){
 		int hits = 2;
 		int hitNumber = Random.Range(0, hits);
