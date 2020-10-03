@@ -1,9 +1,5 @@
 sceneSetups:
-- path: Assets/RPG Character Animation Pack/Scenes/Testing.unity
+- path: Assets/Scenes/Testing.unity
   isLoaded: 1
   isActive: 1
-  isSubScene: 0
-- path: Assets/VariableInventorySystem/Sample/Sample.unity
-  isLoaded: 1
-  isActive: 0
   isSubScene: 0
