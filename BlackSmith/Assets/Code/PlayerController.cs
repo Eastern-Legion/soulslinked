@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : CharacterController
 {
+	public  float Camerazoom;
     public override void Inputs()
     {
         //Input abstraction for easier asset updates using outside control schemes
@@ -25,11 +26,14 @@ public class PlayerController : CharacterController
         inputHorizontal = Input.GetAxisRaw("Horizontal");
         inputVertical = Input.GetAxisRaw("Vertical");
         inputAiming = Input.GetButtonDown("Aiming");
+		Camerazoom = Input.GetAxisRaw("Mouse Scroll");
+		/*
 		inputDiUp = Input.GetButtonDown("DirectUp");
 		inputDiDown = Input.GetButtonDown("DirectDown");
 		inputDiLeft= Input.GetButtonDown("Directleft");
 		inputDiRight = Input.GetButtonDown("DirectRight");
 		inputFire = Input.GetButtonDown("Fire");
+		*/
 		TarPos = Input.mousePosition;
 	}
 

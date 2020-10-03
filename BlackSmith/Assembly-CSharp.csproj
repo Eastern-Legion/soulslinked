@@ -89,11 +89,11 @@
      <Compile Include="Assets\VariableInventorySystem\Standard\StandardCaseViewData.cs" />
      <Compile Include="Assets\VariableInventorySystem\Sample\ItemCellData.cs" />
      <Compile Include="Assets\VariableInventorySystem\Standard\StandardCaseViewPopup.cs" />
+     <Compile Include="Assets\Code\CharacterController.cs" />
      <Compile Include="Assets\VariableInventorySystem\Core\VariableInventoryCell.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\PostEffectsBase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Quads.cs" />
      <Compile Include="Assets\VariableInventorySystem\Standard\IStandardCaseCellData.cs" />
-     <Compile Include="Assets\Code\CharacterController.cs" />
      <None Include="Assets\Elements\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\VortexEffect.shader" />
