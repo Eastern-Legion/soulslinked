@@ -14,6 +14,8 @@ public class BasicNeeds : MonoBehaviour
     public int Magika = 10;
     public int hunger = 10;
 
+    public 
+
     void Awake()
     {
         CharacterController = GetComponent<CharacterController>();

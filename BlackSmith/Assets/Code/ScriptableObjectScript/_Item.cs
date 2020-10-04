@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum ItemType
+public enum __ItemType
 {
     _WEAPON,
     _POTION,
@@ -13,11 +13,17 @@ public enum ItemType
     _MISC
 }
 
-public abstract class ItemManager : ScriptableObject
+public abstract class _Item : ScriptableObject
 {
     public new string name;
-    public ItemType Type;
+    public __ItemType Type;
     [TextArea(15,20)]
     public string description;
     public GameObject prefab;
+
+    //use for inventory system later on
+    public int item_Width = 1;
+    public int item_Height = 1;
+    public int goldprice = 100;
+
 }

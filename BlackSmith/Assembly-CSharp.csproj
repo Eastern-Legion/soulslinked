@@ -76,8 +76,9 @@
      <Compile Include="Assets\Elements\ImageEffects\Scripts\PostEffectsBase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Quads.cs" />
      <Compile Include="Assets\VariableInventorySystem\Standard\IStandardCaseCellData.cs" />
-     <Compile Include="Assets\Code\ScriptableObject\ItemManager.cs" />
-     <Compile Include="Assets\Code\ScriptableObject\ItemWeaponManager.cs" />
+     <Compile Include="Assets\Code\ScriptableObjectScript\_Item.cs" />
+     <Compile Include="Assets\Code\ScriptableObjectScript\_Item_Weapon.cs" />
+     <Compile Include="Assets\Code\InventoryScript\ItemDatabase.cs" />
      <None Include="Assets\Elements\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\VortexEffect.shader" />
@@ -700,6 +701,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
