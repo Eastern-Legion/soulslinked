@@ -5089,11 +5089,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772354323831215471}
-  - component: {fileID: 7772354323837038295}
   - component: {fileID: 7772354323845058779}
   - component: {fileID: 7772354323840372751}
   - component: {fileID: 7772354323827796523}
   - component: {fileID: 7772354323836079303}
+  - component: {fileID: 7772354323837038295}
+  - component: {fileID: 1592225285487704394}
+  - component: {fileID: 5940792720391920587}
+  - component: {fileID: 2099786538}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5118,20 +5121,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7772354323837038295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7772354323830917455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052c25d6da23f2c4593819b4a319b099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockGui: 0
-  useNavAgent: 0
 --- !u!195 &7772354323845058779
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5203,6 +5192,146 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &7772354323837038295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772354323830917455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052c25d6da23f2c4593819b4a319b099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockGui: 0
+  useNavAgent: 0
+--- !u!114 &1592225285487704394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772354323830917455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35c2d802fe4cd44b8c72ef29ad7e774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 0}
+  rb: {fileID: 0}
+  animator: {fileID: 0}
+  target: {fileID: 0}
+  targetDashDirection: {x: 0, y: 0, z: 0}
+  sceneCamera: {fileID: 0}
+  waistRotationOffset: {x: 0, y: 0, z: 0}
+  CharacterState: 0
+  gravity: -9.8
+  gravityTemp: 0
+  canJump: 0
+  isGrounded: 0
+  jumpSpeed: 12
+  JumpLimit: 0
+  fallDelay: 0.2
+  inAirSpeed: 8
+  rollSpeed: 8
+  isRolling: 0
+  rollduration: 0
+  useMeshNav: 0
+  isMoving: 0
+  canMove: 1
+  walkSpeed: 1.35
+  runSpeed: 6
+  x: 0
+  z: 0
+  dv: 0
+  dh: 0
+  inputVec: {x: 0, y: 0, z: 0}
+  weapon: 0
+  rightWeapon: 0
+  leftWeapon: 0
+  isRelax: 1
+  hipShooting: 0
+  canAction: 1
+  isDead: 0
+  isBlocking: 0
+  knockbackMultiplier: 1
+  isSitting: 0
+  isAiming: 0
+  isClimbing: 0
+  isNearLadder: 0
+  isNearCliff: 0
+  ladder: {fileID: 0}
+  cliff: {fileID: 0}
+  isCasting: 0
+  special: 0
+  aimHorizontal: 0
+  aimVertical: 0
+  bowPull: 0
+  inWaterSpeed: 8
+  instantWeaponSwitch: 0
+  inputJump: 0
+  inputLightHit: 0
+  inputDeath: 0
+  inputUnarmed: 0
+  inputShield: 0
+  inputAttackL: 0
+  inputAttackR: 0
+  inputCastL: 0
+  inputCastR: 0
+  inputSwitchUpDown: 0
+  inputSwitchLeftRight: 0
+  inputLshift: 0
+  inputTargetBlock: 0
+  inputDashVertical: 0
+  inputDashHorizontal: 0
+  inputHorizontal: 0
+  inputVertical: 0
+  inputDiUp: 0
+  inputDiDown: 0
+  inputDiLeft: 0
+  inputDiRight: 0
+  inputAiming: 0
+  inputFire: 0
+  inputReload: 0
+  inputTimeSlow: 0
+  inputTimePause: 0
+  TarPos: {x: 0, y: 0, z: 0}
+  InputScroll: 0
+  startTime: 0
+  holdTime: 2
+--- !u!114 &5940792720391920587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772354323830917455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d46dc4e6edd3c8458452875ed2481f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  Stamina: 50
+  Magika: 10
+  hunger: 10
+--- !u!114 &2099786538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772354323830917455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d46dc4e6edd3c8458452875ed2481f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  Stamina: 50
+  Magika: 10
+  hunger: 10
 --- !u!1 &7772354323830919755
 GameObject:
   m_ObjectHideFlags: 0

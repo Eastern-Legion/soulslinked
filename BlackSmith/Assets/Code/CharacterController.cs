@@ -46,7 +46,7 @@ public class CharacterController : MonoBehaviour{
 	public Vector3 waistRotationOffset;
 	public CharacterState CharacterState = CharacterState.DEFAULT;
 
-	public BasicNeeds BasicNeeds;
+	BasicNeeds BasicNeeds;
 
 	[Header("Jump")]
 	public float gravity = -9.8f;
@@ -57,10 +57,10 @@ public class CharacterController : MonoBehaviour{
 	bool isJumping = false;
 	[HideInInspector]
 	public bool isGrounded;
-	public float jumpSpeed = 12;
+	public float jumpSpeed = 6;
 	bool doJump = false;
-	int JumpCount;
-	public int JumpLimit;
+	int JumpCount = 0;
+	public int JumpLimit = 1;
 	bool isFalling;
 	bool startFall;
 	float fallingVelocity = -1f;
@@ -241,7 +241,7 @@ public class CharacterController : MonoBehaviour{
 			else{
 				inputVec = new Vector3(0, 0, 0);
 			}
-			if(inputJump){
+			if(inputJump && !isJumping){
 				doJump = true;
 			}
 			else{
@@ -744,7 +744,8 @@ public class CharacterController : MonoBehaviour{
 		float threshold = .45f;
 		RaycastHit hit;
 		Vector3 offset = new Vector3(0, 0.4f, 0);
-		if(Physics.Raycast((transform.position + offset), -Vector3.up, out hit, 100f)){
+		if(Physics.Raycast((transform.position + offset), -Vector3.up, out hit, 100f))
+		{
 			distanceToGround = hit.distance;
 			if(distanceToGround < threshold)
 			{
@@ -765,9 +766,11 @@ public class CharacterController : MonoBehaviour{
 					CharacterState = CharacterState.DEFAULT;
 				}
 			}
-			else{
+			else
+			{
 				fallTimer += 0.009f;
-				if(fallTimer >= fallDelay){
+				if(fallTimer >= fallDelay)
+				{
 					isGrounded = false;
 				}
 			}
@@ -778,27 +781,28 @@ public class CharacterController : MonoBehaviour{
 	{
 		if(isGrounded)
 		{
-			if(canJump && doJump && !isJumping && _JumpCount())
-			{
-				StartCoroutine(_Jump());
-				JumpCount += 1;
-				Debug.Log("Jump regular");
-			}
+			/*if (JumpCount == 0)
+			{ */
+				if(canJump && doJump && !isJumping)
+				{
+					StartCoroutine(_Jump());
+					Debug.Log("Jump regular");
+				}
+			//}
 		}
-		else
-		{    
-			if(!_JumpCount())
-			{
-				canJump = false;
-			}
-			if(canJump && doJump  && !isJumping && _JumpCount())
-			{
-				StartCoroutine(_Jump());
-				JumpCount += 1;
-			}
-
+		else 
+		{
 			if(isFalling)
 			{
+				/* if (JumpCount < JumpLimit && canJump && doJump  && !isJumping)
+				{
+					StartCoroutine(_Jump());
+					Debug.Log("Jump double");
+				}
+				else if (JumpLimit <= JumpCount)
+				{
+					canJump = false;
+				} */
 				animator.SetInteger("Jumping", 2);
 				canJump = false;
 				//prevent from going into land animation while in air
@@ -807,6 +811,7 @@ public class CharacterController : MonoBehaviour{
 					animator.SetTrigger("JumpTrigger");
 					startFall = true;
 				}
+				//Debug.Log("JumpCount "+JumpCount);
 			}
 		}
 	}
@@ -815,27 +820,22 @@ public class CharacterController : MonoBehaviour{
 	public IEnumerator _Jump()
 	{
 		isJumping = true;
-		if (JumpCount >= 1)	{animator.SetInteger("Jumping", 3);}
-		else{animator.SetInteger("Jumping", 1);}
+		if (JumpCount > 1)
+		{
+			animator.SetInteger("Jumping", 3);
+		}
+		else
+		{
+			animator.SetInteger("Jumping", 1);
+		}
 		animator.SetTrigger("JumpTrigger");
 		// Apply the current movement to launch velocity
 		float jjumpSpeed = jumpSpeed - JumpCount;
 		rb.velocity += jjumpSpeed * Vector3.up;
 		canJump = false;
+		JumpCount += 1;
 		yield return new WaitForSeconds(0.5f);
 		isJumping = false;
-	}
-
-	bool _JumpCount()
-	{
-		if (JumpCount >= JumpLimit)
-		{
-			return false;
-		} 
-		else
-		{
-			return true;
-		}
 	}
 	void AirControl(){
 		if(!isGrounded){

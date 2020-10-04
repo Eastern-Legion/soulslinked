@@ -626,6 +626,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1592225285487704394, guid: 1406a2a293dbca74ab30d79eaa76f8ad, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 331914004}
+    - target: {fileID: 1592225285487704394, guid: 1406a2a293dbca74ab30d79eaa76f8ad, type: 3}
+      propertyPath: sceneCamera
+      value: 
+      objectReference: {fileID: 54393152}
+    - target: {fileID: 1592225285487704394, guid: 1406a2a293dbca74ab30d79eaa76f8ad, type: 3}
+      propertyPath: JumpLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592225285487704394, guid: 1406a2a293dbca74ab30d79eaa76f8ad, type: 3}
+      propertyPath: jumpSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7772354323830917455, guid: 1406a2a293dbca74ab30d79eaa76f8ad, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1517,12 +1533,11 @@ MonoBehaviour:
   canJump: 0
   isGrounded: 0
   jumpSpeed: 12
-  doublejumpSpeed: 12
-  canDoubleJump: 0
-  isDoubleJumping: 0
+  JumpLimit: 1
   fallDelay: 0.2
   inAirSpeed: 8
   rollSpeed: 8
+  isRolling: 0
   rollduration: 0
   useMeshNav: 0
   isMoving: 0
@@ -1531,6 +1546,9 @@ MonoBehaviour:
   runSpeed: 6
   x: 0
   z: 0
+  dv: 0
+  dh: 0
+  inputVec: {x: 0, y: 0, z: 0}
   weapon: 0
   rightWeapon: 0
   leftWeapon: 0
@@ -1541,6 +1559,7 @@ MonoBehaviour:
   isBlocking: 0
   knockbackMultiplier: 1
   isSitting: 0
+  isAiming: 0
   isClimbing: 0
   isNearLadder: 0
   isNearCliff: 0
@@ -1552,26 +1571,6 @@ MonoBehaviour:
   aimVertical: 0
   bowPull: 0
   inWaterSpeed: 8
-  twoHandAxe: {fileID: 0}
-  twoHandSword: {fileID: 0}
-  twoHandSpear: {fileID: 0}
-  twoHandBow: {fileID: 0}
-  twoHandCrossbow: {fileID: 0}
-  twoHandClub: {fileID: 0}
-  staff: {fileID: 0}
-  swordL: {fileID: 0}
-  swordR: {fileID: 0}
-  maceL: {fileID: 0}
-  maceR: {fileID: 0}
-  daggerL: {fileID: 0}
-  daggerR: {fileID: 0}
-  itemL: {fileID: 0}
-  itemR: {fileID: 0}
-  shield: {fileID: 0}
-  pistolL: {fileID: 0}
-  pistolR: {fileID: 0}
-  rifle: {fileID: 0}
-  spear: {fileID: 0}
   instantWeaponSwitch: 0
   inputJump: 0
   inputLightHit: 0
@@ -1584,7 +1583,7 @@ MonoBehaviour:
   inputCastR: 0
   inputSwitchUpDown: 0
   inputSwitchLeftRight: 0
-  inputStrafe: 0
+  inputLshift: 0
   inputTargetBlock: 0
   inputDashVertical: 0
   inputDashHorizontal: 0
@@ -1600,6 +1599,9 @@ MonoBehaviour:
   inputTimeSlow: 0
   inputTimePause: 0
   TarPos: {x: 0, y: 0, z: 0}
+  InputScroll: 0
+  startTime: 0
+  holdTime: 2
 --- !u!1001 &6152267886261626950
 PrefabInstance:
   m_ObjectHideFlags: 0

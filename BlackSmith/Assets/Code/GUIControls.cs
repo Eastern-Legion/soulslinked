@@ -39,6 +39,9 @@ public class GUIControls : MonoBehaviour{
 					CharacterController.canAction = true;
 					CharacterController.animator.SetTrigger("RelaxTrigger");
 				}
+				if(GUI.Button(new Rect(130, 165, 100, 30), "Pickup")){
+								CharacterController.Pickup();
+							}
 				if(!CharacterController.isSitting && !CharacterController.isMoving && CharacterController.weapon == Weapon.RELAX){
 					if(GUI.Button(new Rect(1115, 345, 100, 30), "Sit")){
 						CharacterController.canAction = false;
@@ -295,13 +298,11 @@ public class GUIControls : MonoBehaviour{
 					if(GUI.Button(new Rect(30, 270, 100, 30), "Death")){
 						StartCoroutine(CharacterController._Death());
 					}
-					if(CharacterController.weapon != Weapon.ARMED){
-						if(GUI.Button(new Rect(130, 165, 100, 30), "Pickup")){
-							CharacterController.Pickup();
-						}
-						if(GUI.Button(new Rect(235, 165, 100, 30), "Activate")){
-							CharacterController.Activate();
-						}
+					if(GUI.Button(new Rect(130, 165, 100, 30), "Pickup")){
+						CharacterController.Pickup();
+					}
+					if(GUI.Button(new Rect(235, 165, 100, 30), "Activate")){
+						CharacterController.Activate();
 					}
 					else if(CharacterController.weapon == Weapon.ARMED){
 						if(CharacterController.leftWeapon != 0 && CharacterController.rightWeapon != 0){
