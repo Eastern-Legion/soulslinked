@@ -1,4 +1,4 @@
-# Radiant Enigma  (Working title)
+# [Radiant Enigma  (Working title)](https://eastern-legion.gitlab.io/soulslinked/)
 
 Update (24/1/20) : The scope of the game revamped.
 
@@ -13,6 +13,27 @@ The mechanics of learning will be the main drive of the game where everything fr
 - coverging skill tree
 - multiple approach dungeon
 
+## Road map
+
+- Proof of Concept  
+- Create a Playable Game
+- Inventory system
+- Learning system
+- Enemy AI
+- Area Transition
+- Dungeon Generator
+- Item List
+- Potion Effects
+- Build up the World
+- Manage the Story
+- Add subtle Feature
+
 `made in unity`
 
-## Website [here](https://eastern-legion.gitlab.io/soulslinked/)
+## Contributors
+
+@KrononConspirator - Project Leader, Founder  
+@koushiroue - Sprite Artist, Project Advisor  
+@ir4un - Programmer  
+@Kidako, @PrimedBread - Creative Producers  
+@shiroakitsu - Project Advisor  
