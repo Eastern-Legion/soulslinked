@@ -33,7 +33,7 @@ The mechanics of learning will be the main drive of the game where everything fr
 ## Contributors
 
 @KrononConspirator - Project Leader, Founder  
-@koushiroue - Sprite Artist, Project Advisor
-@ir4un - Programmer
-@Kidako, @PrimedBread - Creative Producers
-@shiroakitsu - Project Advisor
+@koushiroue - Sprite Artist, Project Advisor  
+@ir4un - Programmer  
+@Kidako, @PrimedBread - Creative Producers  
+@shiroakitsu - Project Advisor  

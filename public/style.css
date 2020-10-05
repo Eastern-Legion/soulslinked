@@ -99,3 +99,30 @@ body#2 {
  transform: translateX(-100%); 
  }
 }
+
+/* Paragraphs , Mains Texts*/
+p {
+  font-family: Segoe UI;
+}
+b { 
+  font-family: Segoe UI;
+}
+h1, h2 {
+  font-family: Segoe UI;
+}
+/* id , classes*/
+#roll {
+  font-family: consolas;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#layout {
+  width : 640px;
+  margin: 10px;
+  float: left;
+}
+#column {
+  width: 480px; 
+  padding: 10px; 
+  float: left;
+}
