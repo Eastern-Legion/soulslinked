@@ -1,4 +1,4 @@
-# Radiant Enigma  (Working title)
+# [Radiant Enigma  (Working title)](https://eastern-legion.gitlab.io/soulslinked/)
 
 Update (24/1/20) : The scope of the game revamped.
 
@@ -14,5 +14,3 @@ The mechanics of learning will be the main drive of the game where everything fr
 - multiple approach dungeon
 
 `made in unity`
-
-## Website [here](https://eastern-legion.gitlab.io/soulslinked/)
