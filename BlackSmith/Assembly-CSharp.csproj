@@ -41,6 +41,7 @@
      <Compile Include="Assets\Code\IKHands.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Bloom.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs" />
+     <Compile Include="Assets\Code\Input_Extender\Key_Extender.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Triangles.cs" />
      <Compile Include="Assets\Code\GUIControls.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ScreenOverlay.cs" />
@@ -51,12 +52,12 @@
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
      <Compile Include="Assets\Code\CharacterController.cs" />
      <Compile Include="Assets\Code\ScriptableObjectScript\_Item.cs" />
+     <Compile Include="Assets\Code\Input_Extender\Mouse_Extender.cs" />
      <Compile Include="Assets\Code\BasicNeeds.cs" />
      <Compile Include="Assets\Code\InventoryScript\ItemDatabase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\PostEffectsBase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Quads.cs" />
-     <Compile Include="Assets\Code\Input_Extender\Key_Extender.cs" />
-     <Compile Include="Assets\Code\Input_Extender\Mouse_Extender.cs" />
+     <Compile Include="Assets\Code\AniSeeker.cs" />
      <None Include="Assets\Elements\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\VortexEffect.shader" />

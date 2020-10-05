@@ -214,7 +214,7 @@ public class CharacterController : MonoBehaviour{
 		BasicNeeds = GetComponent<BasicNeeds>();
 	}
 
-    void Start()
+    public void ToRelax()
     {
         animator.SetBool("Relax", true);
 		isRelax = true;
@@ -271,13 +271,15 @@ public class CharacterController : MonoBehaviour{
 			if(inputShield && canAction && isGrounded && !isBlocking && leftWeapon != 7){
 				StartCoroutine(_SwitchWeapon(7));
 			}
-			if(inputAttackL && canAction && isGrounded && !isBlocking){
+			if(inputAttackL && canAction && isGrounded && !isBlocking)
+			{
 				Attack(1);
 			}
 			if(inputAttackL && canAction && isGrounded && isBlocking){
 				StartCoroutine(_BlockHitReact());
 			}
-			if(inputAttackR && canAction && isGrounded && !isBlocking){
+			if(inputAttackR && canAction && isGrounded)
+			{
 				Attack(2);
 			}
 			if(inputAttackR && canAction && isGrounded && isBlocking){
@@ -619,6 +621,8 @@ public class CharacterController : MonoBehaviour{
 
 	#region Swimming
 
+	#region Collider stuff
+
 	void OnTriggerEnter(Collider collide){
 		//If entering a water volume
 		if(collide.gameObject.layer == 4){
@@ -641,10 +645,11 @@ public class CharacterController : MonoBehaviour{
 				isNearLadder = true;
 				ladder = collide.gameObject;
 			}
-		}
-		else if(collide.transform.name.Contains("Cliff")){
+			else if(collide.transform.name.Contains("Cliff")){
 			isNearCliff = true;
 			cliff = collide.gameObject;
+			}
+			
 		}
 	}
 
@@ -666,6 +671,8 @@ public class CharacterController : MonoBehaviour{
 			}
 		}
 	}
+
+	#endregion
 
 	//Movement when in water volume
 	void WaterControl(){
@@ -1057,6 +1064,7 @@ public class CharacterController : MonoBehaviour{
 			}
 		}
 		//
+		isAttacking = false;
 	}
 
 	public void AttackKick(int kickSide){
@@ -1192,11 +1200,12 @@ public class CharacterController : MonoBehaviour{
 		}
 	}
 
-	IEnumerator _Staggered(float staggertime)
+	public IEnumerator _Staggered(float staggertime)
 	{
-		animator.SetTrigger("Stunned");
+		animator.SetBool("Stunned",true);
 		StartCoroutine(_Lock(true, true, true, 0,staggertime));
-		animator.SetTrigger("Stunned");
+		GetHit();
+		animator.SetBool("Stunned",false);
 		yield return null;
 	}
 
@@ -1286,7 +1295,7 @@ public class CharacterController : MonoBehaviour{
 	}
 
 	//Placeholder functions for Animation events
-	public void Hit()
+	public void Struck()
 	{
 		 /*        
         if damage collider contact ,get damage from collider

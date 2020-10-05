@@ -952,8 +952,9 @@ GameObject:
   - component: {fileID: 1396388657}
   - component: {fileID: 1396388659}
   - component: {fileID: 1396388658}
+  - component: {fileID: 1396388660}
   m_Layer: 0
-  m_Name: Trails
+  m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5754,6 +5755,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!65 &1396388660
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396388656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26318496, y: 0.093750514, z: 0.47149038}
+  m_Center: {x: -0.18242487, y: 0.0051569194, z: 0.2889452}
 --- !u!1 &1605414224
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,7 +133,7 @@ public class GUIControls : MonoBehaviour{
 						//ATTACK LEFT
 						if(CharacterController.weapon == Weapon.SHIELD || CharacterController.weapon == Weapon.RIFLE || CharacterController.weapon != Weapon.ARMED || (CharacterController.weapon == Weapon.ARMED && CharacterController.leftWeapon != 0) && CharacterController.leftWeapon != 7){
 							if(GUI.Button(new Rect(25, 85, 100, 30), "Attack L")){
-								CharacterController.Attack(1);
+									CharacterController.Attack(1);
 							}
 						}
 						//ATTACK RIGHT

@@ -14,11 +14,7 @@ public class PlayerController : CharacterController
 		{
 				if (!isRelax)
 				{
-					animator.SetBool("Relax", true);
-					isRelax = true;
-					weapon = Weapon.RELAX;
-					canAction = false;
-					animator.SetTrigger("RelaxTrigger");
+					ToRelax();
 				}
 				else
 				{
@@ -68,7 +64,7 @@ public class PlayerController : CharacterController
         inputDeath = Input.GetButtonDown("Death");
         inputUnarmed = Input.GetButtonDown("Unarmed");
         inputShield = Input.GetButtonDown("Shield");
-        inputAttackL = Input.GetButtonDown("AttackL");
+		inputAttackL = Input.GetButtonDown("AttackL");
         inputAttackR = Input.GetButtonDown("AttackR");
         inputCastL = Input.GetButtonDown("CastL");
         inputCastR = Input.GetButtonDown("CastR");
