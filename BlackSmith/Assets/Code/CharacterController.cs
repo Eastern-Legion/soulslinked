@@ -197,12 +197,14 @@ public class CharacterController : MonoBehaviour{
 	public bool inputReload;
 	public bool inputTimeSlow;
 	public bool inputTimePause;
-	public Vector3 TarPos; 
-	#endregion
+	public Vector3 TarPos;
+    private bool isAttacking;
+	public GameObject EquippedWeapon;
+    #endregion
 
-	#region Initialization
+    #region Initialization
 
-	void Awake(){
+    void Awake(){
 		//set the components
 		navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();
@@ -919,10 +921,14 @@ public class CharacterController : MonoBehaviour{
 	//weaponNumber 18 = Rifle
 	//weaponNumber 19 == Right Spear
 	//weaponNumber 20 == 2H Club
-	public void Attack(int attackSide){
-		if(canAction){
-			//No controller input
-			if(inputVec.magnitude == 0f){
+	public void Attack(int attackSide)
+	{
+		if(canAction)
+		{
+			isAttacking = true;
+			//No movement
+			if(inputVec.magnitude == 0f)
+			{
 				if(weapon == Weapon.UNARMED || weapon == Weapon.ARMED || weapon == Weapon.ARMEDSHIELD){
 					int maxAttacks = 3;
 					int attackNumber = 0;
@@ -1003,7 +1009,8 @@ public class CharacterController : MonoBehaviour{
 						}
 					}
 				}
-				else if(weapon == Weapon.TWOHANDSWORD){
+				else if(weapon == Weapon.TWOHANDSWORD)
+				{
 					int maxAttacks = 11;
 					{
 						int attackNumber = Random.Range(1, maxAttacks);
@@ -1013,7 +1020,8 @@ public class CharacterController : MonoBehaviour{
 						}
 					}
 				}
-				else{
+				else
+				{
 					int maxAttacks = 6;
 					{
 						int attackNumber = Random.Range(1, maxAttacks);
@@ -1044,9 +1052,11 @@ public class CharacterController : MonoBehaviour{
 					animator.SetTrigger("AttackDual1Trigger");
 				}
 			}
-			else{
+			else
+			{
 			}
 		}
+		//
 	}
 
 	public void AttackKick(int kickSide){
@@ -1776,6 +1786,7 @@ public class CharacterController : MonoBehaviour{
 	public IEnumerator _WeaponVisibility(int weaponNumber, float delayTime, bool visibility){
 		yield return new WaitForSeconds(delayTime);
 		// weapon equiped game object (hide/reveal); 
+		EquippedWeapon.SetActive(visibility);
 		yield return null;
 	}
 	public IEnumerator _BlockHitReact(){

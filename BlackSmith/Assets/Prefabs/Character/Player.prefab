@@ -5221,6 +5221,8 @@ MonoBehaviour:
   Stamina: 50
   Magika: 10
   hunger: 10
+  isstruck: 0
+  isEquipped: 0
 --- !u!114 &2099786537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,9 +5314,10 @@ MonoBehaviour:
   inputTimeSlow: 0
   inputTimePause: 0
   TarPos: {x: 0, y: 0, z: 0}
+  EquippedWeapon: {fileID: 0}
   InputScroll: 0
-  startTime: 0
-  holdTime: 2
+  Weaponobject: {fileID: 0}
+  playergameObject: {fileID: 7772354323830974601}
 --- !u!1 &7772354323830919755
 GameObject:
   m_ObjectHideFlags: 0

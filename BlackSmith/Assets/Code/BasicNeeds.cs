@@ -8,13 +8,18 @@ public class BasicNeeds : MonoBehaviour
 
     CharacterController CharacterController;
 
+
     [Header("Basic Needs")]
 	public int Health = 100;
     public int Stamina = 50;
     public int Magika = 10;
     public int hunger = 10;
+    int _WeapNum;
+    CapsuleCollider capCollider;
 
-    public 
+    public bool isstruck; 
+
+    public bool isEquipped = false;
 
     void Awake()
     {
@@ -29,9 +34,23 @@ public class BasicNeeds : MonoBehaviour
       HungerManager();
     }
 
-    private void HungerManager()
+    void attackmanager(int Weap)
     {
+        Weap = _WeapNum;
+        //
+        {
+            StartCoroutine(CharacterController._SwitchWeapon(Weap));
+        }
         
+    }
+
+    private void HPmanager()
+    {
+        //regen
+        //damaged
+        if(capCollider )
+        {
+        }
     }
 
     private void StaminaManager()
@@ -44,7 +63,8 @@ public class BasicNeeds : MonoBehaviour
         
     }
 
-    private void HPmanager()
+
+        private void HungerManager()
     {
         
     }

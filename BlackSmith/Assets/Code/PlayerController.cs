@@ -1,20 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using InputExtender;
 public class PlayerController : CharacterController
 {
 	public  float InputScroll;
-    public float startTime = 0f;
-    public float holdTime = 2.0f; //2 seconds
-     
-    
+    public GameObject Weaponobject;
+	
+	public GameObject playergameObject;
 	void _Modechange()
 	{
-		/* if (Input.GetKey(KeyCode.E))
+		if (Key_Extender.IsLongKeyPress(KeyCode.E))
 		{
-			for (startTime = 0; holdTime < 20; startTime +=0.1f)
-			{
 				if (!isRelax)
 				{
 					animator.SetBool("Relax", true);
@@ -32,14 +29,37 @@ public class PlayerController : CharacterController
 					canAction = true;
 					animator.SetTrigger("RelaxTrigger");
 				}
-				startTime = 0f;	
-			}
 		}
-		else
+
+		if(Input.GetKeyDown(KeyCode.Alpha1))
 		{
-			startTime = 0f;	
-		} */
+			EquipWeapon1();
+		}
+
 	}
+
+/* 	void UnEquip()
+    {
+
+        Weaponobject.transform.parent = null;
+        Weaponobject.GetComponent<Rigidbody>().useGravity = true;
+        Weaponobject.GetComponent<Rigidbody>().isKinematic = false;
+        Weaponobject.GetComponent<BoxCollider>().isTrigger = false;
+    } */
+    void EquipWeapon1()
+    {
+        
+        Weaponobject.GetComponent<Rigidbody>().useGravity = false;
+        Weaponobject.GetComponent<Rigidbody>().isKinematic = true;
+        Weaponobject.GetComponent<BoxCollider>().isTrigger = true;
+		Weaponobject.SetActive(false);
+        Weaponobject.transform.parent = playergameObject.transform;
+		 Weaponobject.transform.position = playergameObject.transform.position;
+        Weaponobject.transform.rotation = playergameObject.transform.rotation;
+		EquippedWeapon = Weaponobject;
+		StartCoroutine(_SwitchWeapon(9));
+        
+    }
     public override void Inputs()
     {
         //Input abstraction for easier asset updates using outside control schemes

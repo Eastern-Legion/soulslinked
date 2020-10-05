@@ -44,17 +44,19 @@
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Triangles.cs" />
      <Compile Include="Assets\Code\GUIControls.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ScreenOverlay.cs" />
+     <Compile Include="Assets\Code\ScriptableObjectScript\_Item_Weapon.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\PostEffectsHelper.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ImageEffects.cs" />
      <Compile Include="Assets\Code\CameraController.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
      <Compile Include="Assets\Code\CharacterController.cs" />
+     <Compile Include="Assets\Code\ScriptableObjectScript\_Item.cs" />
      <Compile Include="Assets\Code\BasicNeeds.cs" />
+     <Compile Include="Assets\Code\InventoryScript\ItemDatabase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\PostEffectsBase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Quads.cs" />
-     <Compile Include="Assets\Code\ScriptableObjectScript\_Item.cs" />
-     <Compile Include="Assets\Code\ScriptableObjectScript\_Item_Weapon.cs" />
-     <Compile Include="Assets\Code\InventoryScript\ItemDatabase.cs" />
+     <Compile Include="Assets\Code\Input_Extender\Key_Extender.cs" />
+     <Compile Include="Assets\Code\Input_Extender\Mouse_Extender.cs" />
      <None Include="Assets\Elements\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\VortexEffect.shader" />
@@ -654,6 +656,9 @@
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -669,6 +674,15 @@
     <Reference Include="Unity.Rider.Editor">
         <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -678,55 +692,8 @@
     <Reference Include="UnityEditor.UI">
         <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Cinemachine">
-        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>D:/Proj/Blacksmith/soulslinked/BlackSmith/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="sample.trade.csproj">
-      <Project>{2237485a-5f90-6186-dea9-696e1ae52cdb}</Project>
-      <Name>sample.trade</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="samples-environment.csproj">
-      <Project>{c1809ce4-51af-cbb3-1553-d16392123126}</Project>
-      <Name>samples-environment</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="goodcat.un-inventory.standard.csproj">
-      <Project>{cb00e1d8-3a00-7668-fd5d-be77d8a701fa}</Project>
-      <Name>goodcat.un-inventory.standard</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="goodcat.un-inventory.editor.csproj">
-      <Project>{02984ac9-cd64-7bb8-d293-6af56c4de33e}</Project>
-      <Name>goodcat.un-inventory.editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="sample.hero.csproj">
-      <Project>{977c01bf-1d33-2466-735a-1ed9ac31b65d}</Project>
-      <Name>sample.hero</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="goodcat.un-inventory.core.csproj">
-      <Project>{349742fd-d9f7-ebaf-2b3d-f3dd53b36d3b}</Project>
-      <Name>goodcat.un-inventory.core</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="goodcat.un-inventory.plugins.standard.csproj">
-      <Project>{04ad6fd1-5241-68ba-dbab-605548825f3d}</Project>
-      <Name>goodcat.un-inventory.plugins.standard</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
