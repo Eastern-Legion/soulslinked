@@ -36,9 +36,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Code\PlayerController.cs" />
+     <Compile Include="Assets\Code\CharacterBase\PlayerController.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ImageEffectBase.cs" />
-     <Compile Include="Assets\Code\IKHands.cs" />
+     <Compile Include="Assets\Code\CharacterBase\IKHands.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Bloom.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs" />
      <Compile Include="Assets\Code\Input_Extender\Key_Extender.cs" />
@@ -50,14 +50,14 @@
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ImageEffects.cs" />
      <Compile Include="Assets\Code\CameraController.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
-     <Compile Include="Assets\Code\CharacterController.cs" />
+     <Compile Include="Assets\Code\CharacterBase\CharacterController.cs" />
      <Compile Include="Assets\Code\ScriptableObjectScript\_Item.cs" />
      <Compile Include="Assets\Code\Input_Extender\Mouse_Extender.cs" />
-     <Compile Include="Assets\Code\BasicNeeds.cs" />
+     <Compile Include="Assets\Code\CharacterBase\BasicNeeds.cs" />
      <Compile Include="Assets\Code\InventoryScript\ItemDatabase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\PostEffectsBase.cs" />
      <Compile Include="Assets\Elements\ImageEffects\Scripts\Quads.cs" />
-     <Compile Include="Assets\Code\AniSeeker.cs" />
+     <Compile Include="Assets\Code\CharacterBase\WeaponManager.cs" />
      <None Include="Assets\Elements\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\GlobalFog.shader" />
      <None Include="Assets\Elements\ImageEffects\Shaders\VortexEffect.shader" />

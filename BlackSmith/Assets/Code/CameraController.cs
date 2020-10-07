@@ -62,11 +62,11 @@ public class CameraController : MonoBehaviour
 		{
 			if (PlayerController.InputScroll == -1)
 			{
-			offsetHeight = offsetHeight-1;
+				offsetHeight = offsetHeight-1;
 			} 
 			else if(PlayerController.InputScroll == 1)
 			{
-			offsetHeight = offsetHeight+1;
+				offsetHeight = offsetHeight+1;
 			}
 		}
 		
