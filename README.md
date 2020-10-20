@@ -1,4 +1,4 @@
-# [Radiant Enigma  (Working title)](https://eastern-legion.gitlab.io/soulslinked/)
+# A website for [Radiant Enigma  (Working title)](https://eastern-legion.gitlab.io/soulslinked/)
 
 Update (24/1/20) : The scope of the game revamped.
 
