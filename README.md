@@ -3,8 +3,6 @@
 Update (24/1/20) : The scope of the game revamped.
 (October 2020) : project suspended.
 
-[![pipeline status](https://gitlab.com/eastern-legion/soulslinked/badges/master/pipeline.svg)](https://gitlab.com/eastern-legion/soulslinked/commits/master)
-
 ## Game Description
 
 Standard RPG setting where the main focus is adventure and learning.
