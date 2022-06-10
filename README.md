@@ -1,8 +1,12 @@
-# A website for [Radiant Enigma  (Working title)](https://eastern-legion.gitlab.io/soulslinked/)
+# A website for [Radiant Enigma  (Working title)](https://eastern-legion.github.io/soulslinked/index.html)
 
-6/10/22 : Migrated to github
-Update (24/1/20) : The scope of the game revamped.
-(October 2020) : project suspended.
+6/10/22 : Migrated to github  
+
+Update (24/1/20) : The scope of the game revamped.  
+
+(October 2020) : project suspended.  
+
+[Website](https://eastern-legion.github.io/soulslinked/index.html)
 
 ## Game Description
 
