@@ -1,5 +1,6 @@
 # A website for [Radiant Enigma  (Working title)](https://eastern-legion.gitlab.io/soulslinked/)
 
+6/10/22 : Migrated to github
 Update (24/1/20) : The scope of the game revamped.
 (October 2020) : project suspended.
 
