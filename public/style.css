@@ -1,0 +1,128 @@
+/*Background/Back-End Stuff goes here*/
+body {
+  background-attachment: fixed;
+  background-image: url("assets/bg_new.webp");
+  background-repeat: repeat;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  margin: auto;
+  max-width: 960px;
+}
+
+/*Easter*/
+body#2 {
+  background-image: url("assets/gif/tile_cave_floor_anim.gif");
+  background-repeat: repeat;
+  font-family: 'Trebuchet MS', 'Trebuchet MS', 'Trebuchet MS', 'Trebuchet MS';
+  max-width: 960px;
+}
+
+/* Navigation Bar*/
+.navbar {
+  color: #111111;
+  background-color: #627568;
+  border-radius: 4px;
+  max-width: 960px;
+  overflow: auto;
+}
+
+/* Navigation Bar's Text*/
+.navbar a {
+  display: inline-block;
+  color: #3b2d19;
+  font-size: 16px;
+  padding: 12px;
+  text-decoration: none;
+}
+
+/* Navigation Bar's Text When Hovered*/
+.navbar a:hover {
+  color: #dbdbdb;
+}
+
+/* Current/active navbar link */
+.active {
+  background-color: rgb(245, 175, 45);
+  color: black;
+}
+
+/* Scrolling Notification Because Why Not (tm)*/
+.scroll-left {
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 32px;
+  margin: 0px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+}
+
+.scroll-left p {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 32px;
+ border-radius: 8px;
+ text-align: center;
+ overflow: hidden;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: scroll-left 15s linear infinite;
+ -webkit-animation: scroll-left 15s linear infinite;
+ animation: scroll-left 15s linear infinite;
+}
+
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+
+@-webkit-keyframes scroll-left {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+
+@keyframes scroll-left {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Browser bug fix */
+ -webkit-transform: translateX(-100%); /* Browser bug fix */
+ transform: translateX(-100%); 
+ }
+}
+
+/* Paragraphs , Mains Texts*/
+p {
+  font-family: Segoe UI;
+}
+b { 
+  font-family: Segoe UI;
+}
+h1, h2 {
+  font-family: Segoe UI;
+}
+/* id , classes*/
+#roll {
+  font-family: consolas;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#layout {
+  width : 640px;
+  margin: 10px;
+  float: left;
+}
+#column {
+  width: 480px; 
+  padding: 10px; 
+  float: left;
+}
